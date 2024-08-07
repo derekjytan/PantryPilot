@@ -5,7 +5,7 @@ import { Container, Grid, Box, TextField, Button, Typography, Card, CardContent,
 import { Add, Edit, Delete, PhotoCamera } from '@mui/icons-material';
 import Navbar from '../components/navbar/nav';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { firestore, getDownloadURL} from '../../firebase';
+import { firestore } from '../../firebase';
 import { collection, getDocs, query, doc, deleteDoc, setDoc, getDoc } from 'firebase/firestore';
 import { Camera } from "react-camera-pro";
 
@@ -90,28 +90,28 @@ const MyPantry = () => {
   };
 
   // Handling the camera toggle 
-  const handleCameraToggle = () => {
-    setTakePhoto((prev) => !prev);
-  };
+  // const handleCameraToggle = () => {
+  //   setTakePhoto((prev) => !prev);
+  // };
 
   // Handling the camera capture 
-  const handleCapture = () => {
-    if (camera.current) {
-      const photo = camera.current.takePhoto();
-      setCaptureImage(photo);
-      if (onCapture) {
-        onCapture(photo);
-      }
-    }
-  };
+  // const handleCapture = () => {
+  //   if (camera.current) {
+  //     const photo = camera.current.takePhoto();
+  //     setCaptureImage(photo);
+  //     if (onCapture) {
+  //       onCapture(photo);
+  //     }
+  //   }
+  // };
 
   // Uploading our images to Firebase Storage
-  const uploadImage = async (image) => {
-    const storageRef = ref(storage, `images/${image.name}`);
-    const downloadURL = await getDownloadURL(storageRef);
+  //   const uploadImage = async (image) => {
+  //   const storageRef = ref(storage, `images/${image.name}`);
+  //   const download = await downloadURL(storageRef);
 
-    return downloadURL;
-  };
+  //   return download;
+  // };
 
   return (
     <ThemeProvider theme={theme}>
@@ -140,15 +140,15 @@ const MyPantry = () => {
                 <Add /> Add Item
               </Button>
             </Grid>
-            <Grid item xs={0.5}>
+            {/* <Grid item xs={0.5}>
               <Button variant="contained" color="secondary" fullWidth onClick={handleCameraToggle}>
                 <PhotoCamera /> 
               </Button>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Box>
 
-        {takePhoto && (
+        {/* {takePhoto && (
           <Box sx={{ mb: 4 }}>
             <Camera ref={camera} />
             <Button variant="contained" color="primary" onClick={handleCapture}>
@@ -156,7 +156,7 @@ const MyPantry = () => {
             </Button>
             {captureImage && <img src={captureImage} alt="Captured" style={{ maxWidth: '100%', marginTop: '10px' }} />}
           </Box>
-        )}
+        )} */}
 
 
         <Typography variant="h6" gutterBottom>

@@ -28,5 +28,5 @@ const auth = getAuth(app)
 export {
     app,
     firestore,
-    auth
+    auth,
 }
