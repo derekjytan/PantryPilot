@@ -72,7 +72,7 @@ const Home = () => {
           <Grid item xs={12} sm={4}>
             <Box textAlign="center">
               <Typography variant="h6" gutterBottom>Track Pantry Items</Typography>
-              <Typography>Keep track of what's in your pantry at all times.</Typography>
+              <Typography>Keep track of what&apos;s in your pantry at all times.</Typography>
                 <Image 
                   src="/checklist.svg"
                   alt="Checklist"

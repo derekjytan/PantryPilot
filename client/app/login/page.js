@@ -145,7 +145,7 @@ const Login = () => {
             </Link>
           </Box>
           <Typography variant="body2" sx={{ mt: 2 }}>
-            Don't have an account? <Link href="/register" sx={{ textDecoration: 'underline', fontWeight: 'bold' }}>Sign up</Link>
+            Don&apos;t have an account? <Link href="/register" sx={{ textDecoration: 'underline', fontWeight: 'bold' }}>Sign up</Link>
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
             <Box sx={{ borderBottom: 2, borderColor: 'divider', flex: 1, mb: 2.5 }} />
