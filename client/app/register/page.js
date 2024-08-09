@@ -22,48 +22,67 @@ const theme = createTheme({
 });
 
 const SignUp = () => {
+  // Accessing the token from the global AuthContext
   const { getToken, currentUser } = useAuth();
+  // router hook to navigate the user to the home page after a successful login
   const router = useRouter();
+  // State management to manage the email, password,, and login status
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSigningUp, setIsSigningUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  // useEffect() to fetch the token when the user registers
+  // so when the state changes, the token will be fetched
   useEffect(() => {
     const fetchToken = async () => {
       if (currentUser) {
+        // The get token is fetched from the global AuthContext provider
         const token = await getToken();
         console.log("Token:", token);
       }
     };
-    fetchToken();
-  }, [currentUser, getToken]);
+    fetchToken(); // Fetching the token when the user registers
+  }, [currentUser, getToken]); // This will only run when the currentUser or getToken state changes
 
   const onSubmit = async (e) => {
+    // Prevent the default form submission
     e.preventDefault();
+    // Check if the registration is not already in progress
     if (!isSigningUp) {
+      // Set the login status to true if the user is signing in
+      // This is to prevent multiple registration attempts
+      // So the button will show "Signing Up..."
       setIsSigningUp(true);
       try {
         await doCreateUserWithEmailAndPassword(email, password);
+        // Logging the token to see if the token is actually fetched from global context
         const token = await getToken();
         console.log("Token on Submit:", token);
         router.push('/');
       } catch (error) {
         setErrorMessage(error.message);
+        // Resetting register status if the user fails to sign in
         setIsSigningUp(false);
       }
     }
   };
 
+  // Handle the Google sign in
   const onGoogleSignIn = async (e) => {
+    // Prevent the default form submission
     e.preventDefault();
     if (!isSigningUp) {
+       // Set the google login status to true if the user is signing in
+      // This is to prevent multiple sign in attempts
+      // So the button will show "Signing Up..."
       setIsSigningUp(true);
       try {
         await doSignInWithGoogle();
         router.push('/');
       } catch (error) {
         setErrorMessage(error.message);
+        // Resetting register status if the user fails to sign in
         setIsSigningUp(false);
       }
     }

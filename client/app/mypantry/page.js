@@ -30,16 +30,23 @@ const theme = createTheme({
 });
 
 const MyPantry = () => {
+  // State management to manage the items in the pantry
   const [pantryItems, setPantryItems] = useState([]);
   const [newItem, setNewItem] = useState('');
+  // Accessing the token from the global AuthContext
   const { getToken, currentUser } = useAuth();
 
+  // Function to fetch the items in the pantry from the server
   const fetchPantry = async () => {
     const token = await getToken(); // Get the token from the global context
     try {
+      // Sending an HTTP get request to the server with the token
+      // axios to help get the data from the server
       const res = await axios.get('http://localhost:8000/pantry', {
+        // Include the token in the headers
+        // Ensuring that the backend can recieve the token
         headers: {
-          Authorization: `Bearer ${token}`, // Include the token in the headers
+          Authorization: `Bearer ${token}`,
         },
       });
       setPantryItems(res.data); // Set the fetched pantry items in state
@@ -48,8 +55,11 @@ const MyPantry = () => {
     }
   };
 
+  // Function to add items to the pantry
   const addItem = async (item) => {
     const token = await getToken(); // Get the token from the global context
+    // Ensure that the item and current user are not null
+    // Otherwise theres no point in sending the request to the backend
     if (!item || !currentUser) return;
 
     try {
@@ -69,8 +79,11 @@ const MyPantry = () => {
     setNewItem('');
   };
 
+  // Function to remove items from the pantry
   const removeItem = async (item) => {
     const token = await getToken(); // Get the token from the global context
+    // Ensure that the item and current user are not null
+    // Otherwise theres no point in sending the request to the backend
     if (!item || !currentUser) return;
 
     try {
@@ -88,14 +101,18 @@ const MyPantry = () => {
     }
   };
 
+  // Effect hook to fetch the items in the pantry when the user logs in
+  // This is to update the cycle of fetching the items in the pantry 
+  // when the user logs in or logs out
   useEffect(() => {
     if (currentUser) {
-      fetchPantry();
+      fetchPantry(); // Fetch the items in the pantry when the user is logged in
     } else {
-      setPantryItems([]);
+      setPantryItems([]); // Reset the items in the pantry when the user logs out
     }
-  }, [currentUser]);
+  }, [currentUser]); // Only runs when the currentUser state changes
 
+  // Function to handle the form submission of adding an item to the pantry
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem(newItem);

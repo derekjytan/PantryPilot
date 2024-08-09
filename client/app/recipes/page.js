@@ -1,4 +1,4 @@
-'use client';
+'use client'; // Client side rendering 
 
 import React, { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -31,54 +31,70 @@ const theme = createTheme({
 });
 
 const Recipes = () => {
+  // Accessing the token from the global AuthContext
   const { userLoggedIn, getToken, currentUser } = useAuth();
+  // State management to manage the recipes
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
  
+  // useEffect() to fetch the token when the user logs in
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        fetchPantry();
+        fetchPantry(); // Fetch the pantry items from the server when the user logs in
       }
     });
-    return () => unsubscribe();
-  }, [currentUser]);
+    return () => unsubscribe(); // When the component unmounts, unsubscribe from the onAuthStateChanged event
+  }, [currentUser]); // This will only run when the currentUser state changes
 
+  // Function to fetch the pantry items from the server 
   const fetchPantry = async () => {
     const token = await getToken();
     try {
+      // Sending an HTTP get request to the server with the token
+      // using axios to help get the data from the server
+      // server is a get request to the /pantry endpoint
       const res = await axios.get('http://localhost:8000/pantry', {
         headers: {
+          // Passing the token in the request headers
           Authorization: `Bearer ${token}`,
         },
       });
+      // Generate recipes based on the fetched ingredients from the server
+      // calling the generateRecipes function to pass the ingredients to the server
       generateRecipes(res.data.map(item => item.name)); 
     } catch (error) {
       console.error('Error fetching pantry items:', error);
     }
   };
 
+  // Function to generate the recipes
+  // the ingredients parameter is an array of ingredients that the server will accept as a query 
   const generateRecipes = async (ingredients) => {
+    // Getting the authentication token
     const token = await getToken();
     setLoading(true);
     try {
+        // Sending an HTTP get request to the server with the token to generate the recipes
+        // server is a get request to the /generateRecipe endpoint
       const res = await axios.get('http://localhost:8000/generateRecipe', {
         headers: {
+          // Passing the token in the request headers 
           Authorization: `Bearer ${token}`,
         },
         params: {
-          ingredients: ingredients.join(','),
+          ingredients: ingredients.join(','), // Passing the ingredients as query parameters
         },
       });
       console.log("Generated Recipes:", res.data);
-      setRecipes(res.data);
+      setRecipes(res.data); // Update the recipes state with the generated recipes
     } catch (error) {
       setError('Your pantry is empty!');
       console.error('Error generating recipes:', error);
     } finally {
-      setLoading(false);
+      setLoading(false); // Setting the loading to false after the recipes are generated
     }
   };
 

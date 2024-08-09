@@ -98,10 +98,10 @@ const Home = () => {
                     Find recipes based on your pantry items.
                   </Typography>
                   <Image
-                    src="/recipes.svg"
+                    src="/recipe.svg"
                     alt="Recipes"
-                    width={350}
-                    height={400}
+                    width={220}
+                    height={420}
                   />
                 </Box>
               </motion.div>
@@ -118,8 +118,8 @@ const Home = () => {
                   <Image
                     src="/shopping.svg"
                     alt="Shopping"
-                    width={350}
-                    height={400}
+                    width={240}
+                    height={420}
                   />
                 </Box>
               </motion.div>

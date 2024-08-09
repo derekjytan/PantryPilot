@@ -9,6 +9,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // Wrap the AuthProvider with the children so that the AuthContext is available to all pages
   return (
     <html lang="en">
       <body className={inter.className}>
