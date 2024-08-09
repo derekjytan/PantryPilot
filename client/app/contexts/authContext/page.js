@@ -1,3 +1,4 @@
+// AuthProvider.js
 'use client';
 
 import React, { useContext, useState, useEffect } from "react";
@@ -15,34 +16,40 @@ export function AuthProvider({ children }) {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [isEmailUser, setIsEmailUser] = useState(false);
   const [isGoogleUser, setIsGoogleUser] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); 
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, initializeUser);
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      console.log('onAuthStateChanged user:', user); // Debugging to check if the user is authenticated
+      if (user) {
+        setCurrentUser(user);
+        setUserLoggedIn(true);
+
+        const isEmail = user.providerData.some(
+          (provider) => provider.providerId === "password"
+        );
+        setIsEmailUser(isEmail);
+
+        const isGoogle = user.providerData.some(
+          (provider) => provider.providerId === GoogleAuthProvider.PROVIDER_ID
+        );
+        setIsGoogleUser(isGoogle);
+
+        const token = await user.getIdToken();
+        setToken(token);
+      } else {
+        setCurrentUser(null);
+        setUserLoggedIn(false);
+      }
+      setLoading(false);
+    });
     return () => unsubscribe();
   }, []);
 
-  function initializeUser(user) {
-    if (user) {
-      setCurrentUser(user);
-      setUserLoggedIn(true);
-
-      const isEmail = user.providerData.some(
-        (provider) => provider.providerId === "password"
-      );
-      setIsEmailUser(isEmail);
-
-      // Uncomment and use the following if Google provider detection is needed
-      const isGoogle = user.providerData.some(
-        (provider) => provider.providerId === GoogleAuthProvider.PROVIDER_ID
-      );
-      setIsGoogleUser(isGoogle);
-    } else {
-      setCurrentUser(null);
-      setUserLoggedIn(false);
-    }
-    setLoading(false);
-  }
+  const getToken = async () => {
+    return token;
+  };
 
   const value = {
     userLoggedIn,
@@ -50,6 +57,7 @@ export function AuthProvider({ children }) {
     isGoogleUser,
     currentUser,
     setCurrentUser,
+    getToken,
   };
 
   return (
