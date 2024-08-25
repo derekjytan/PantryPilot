@@ -21,7 +21,7 @@ Pantry Pilot is a full-stack application designed to help users take control of 
 
 ![Next.js](https://github.com/derekjytan/PantryPilot/raw/main/nextjs.svg)  ![React.js](https://github.com/derekjytan/PantryPilot/raw/main/react.svg)  ![Material-UI](https://github.com/derekjytan/PantryPilot/raw/main/mui.svg)  ![Express.js](https://github.com/derekjytan/PantryPilot/raw/main/express.svg)  ![Node.js](https://github.com/derekjytan/PantryPilot/raw/main/nodejs.svg)  ![Firebase](https://github.com/derekjytan/PantryPilot/raw/main/firebase.svg)  ![OpenAI](https://github.com/derekjytan/PantryPilot/raw/main/openai.svg)
 
-## Client Instructions
+## Instructions
 1. Clone the repository
    - `git clone https://github.com/derekjytan/PantryPilot.git`
 3. Install node dependencies 
@@ -33,4 +33,13 @@ Pantry Pilot is a full-stack application designed to help users take control of 
    - Add relevant credentials
    - `cp .env.example .env`
 7. `npm run dev`
+
+8. Go to the server directory
+   - `cd../`
+   - `cd server`
+9. Replace Firebase API keys with your SDK configurations
+10.  Create a `.env` file 
+   - Add relevant credentials
+   - `cp .env.example .env`
+11. `node server.js`
 
