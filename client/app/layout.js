@@ -1,15 +1,17 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from "./contexts/authContext/page";
+import dynamic from 'next/dynamic';
 
 const inter = Inter({ subsets: ["latin"] });
+
+// Dynamically import AuthProvider with SSR disabled
+const AuthProvider = dynamic(() => import("./contexts/authContext/page"), { ssr: false });
 
 export const metadata = {
   title: "Pantry Pilot",
 };
 
 export default function RootLayout({ children }) {
-  // Wrap the AuthProvider with the children so that the AuthContext is available to all pages
   return (
     <html lang="en">
       <body className={inter.className}>

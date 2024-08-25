@@ -1,4 +1,3 @@
-// AuthProvider.js
 'use client';
 
 import React, { useContext, useState, useEffect } from "react";
@@ -13,7 +12,7 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-export function AuthProvider({ children }) {
+const AuthProvider = ({ children }) => {
   // State management to track the authenticated user and authentication status
   const [currentUser, setCurrentUser] = useState(null);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -88,3 +87,5 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+export default AuthProvider
