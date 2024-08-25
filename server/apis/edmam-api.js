@@ -5,10 +5,8 @@ async function fetchRecipeList(meal) {
     try {
         // Encoding the meal parameter to ensure it's safe for use in a URL (spaces, special characters, etc.)
         const encodedMeal = encodeURIComponent(meal); 
-        const appId = process.env.EDAMAM_APP_ID;
-        const apiKey = process.env.EDAMAM_API_KEY;
         // Edamam API request URL with the encoded meal and API credentials
-        const recipeList = `https://api.edamam.com/search?q=${encodedMeal}&app_id=${appId}&app_key=${apiKey}`;
+        const recipeList =  `https://api.edamam.com/search?q=${encodedMeal}&app_id=a2bf45c9&app_key=f380a808c0043346c4413948c63d8a27`;
 
         // get request to the Edamam API and await the response (asynchronously)
         // with API calls, we need to await the response before continuing
