@@ -28,11 +28,7 @@ const db = admin.firestore();
 // This allows the frontend on a different localhost to send requests to the backend
 // frontend is 3000, backend is 8000
 // Enable CORS for all routes
-app.use(cors({
-  origin: 'https://pantry-pilot-wheat.vercel.app/', 
-  credentials: true,
-}));
-
+app.use(cors());
 app.use(express.json()); // Middleware to parse incoming JSON data
 
 // First we need to authenticate the user so that we can request data based on the user
