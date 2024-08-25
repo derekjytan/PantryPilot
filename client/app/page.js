@@ -52,7 +52,7 @@ const Home = () => {
           <Box sx={{ textAlign: 'center', mt: 4 }}>
             <motion.div initial="hidden" animate="visible" variants={slideIn}>
               <Typography variant="h2" gutterBottom>
-                Welcome to Pantry Pilot!
+                Welcome to PantryPilot!
               </Typography>
             </motion.div>
             {!userLoggedIn ? (
