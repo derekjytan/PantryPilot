@@ -10,11 +10,11 @@ Pantry Pilot is a full-stack application designed to help users take control of 
   - ![image](https://github.com/derekjytan/PantryPilot/raw/main/landing.png)
 
 - **Pantry**
-  - Seamless landing page with `Login with Google` button for user login using Firebase Authentication.
+  - Smooth and responsive interface for pantry tracking, styled with `Material UI`.
   - ![image](https://github.com/derekjytan/PantryPilot/raw/main/pantryItems.png)
 
 - **Recipe**
-  - Seamless landing page with `Login with Google` button for user login using Firebase Authentication.
+  - Customized recipe suggestions from your pantry items.
   - ![image](https://github.com/derekjytan/PantryPilot/raw/main/recipe.png)
 ## Tech Stack
 
