@@ -72,7 +72,7 @@ const MyPantry = () => {
   const fetchPantry = async () => {
     const token = await getToken();
     try {
-      const res = await axios.get('http://localhost:8000/pantry', {
+      const res = await axios.get('{process.env.NEXT_PUBLIC_API_URL}/pantry', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -88,7 +88,7 @@ const MyPantry = () => {
     if (!item || !currentUser) return;
 
     try {
-      await axios.post('http://localhost:8000/addItem',
+      await axios.post('{process.env.NEXT_PUBLIC_API_URL}/addItem',
         { item, quantity: 1 },
         {
           headers: {
@@ -111,7 +111,7 @@ const MyPantry = () => {
     if (!item || !currentUser) return;
 
     try {
-      await axios.post('http://localhost:8000/removeItem',
+      await axios.post('${process.env.NEXT_PUBLIC_API_URL}/removeItem',
         { item },
         {
           headers: {

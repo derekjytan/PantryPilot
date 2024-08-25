@@ -56,7 +56,7 @@ const Recipes = () => {
       // Sending an HTTP get request to the server with the token
       // using axios to help get the data from the server
       // server is a get request to the /pantry endpoint
-      const res = await axios.get('http://localhost:8000/pantry', {
+      const res = await axios.get('{process.env.NEXT_PUBLIC_API_URL}/pantry', {
         headers: {
           // Passing the token in the request headers
           Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const Recipes = () => {
     try {
         // Sending an HTTP get request to the server with the token to generate the recipes
         // server is a get request to the /generateRecipe endpoint
-      const res = await axios.get('http://localhost:8000/generateRecipe', {
+      const res = await axios.get('{process.env.NEXT_PUBLIC_API_URL}/generateRecipe', {
         headers: {
           // Passing the token in the request headers 
           Authorization: `Bearer ${token}`,
