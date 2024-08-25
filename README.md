@@ -30,8 +30,8 @@ Pantry Pilot is a full-stack application designed to help users take control of 
    - `cd client`
 5. Replace Firebase API keys with your SDK configurations
 6.  Create a `.env` file 
-   - Add relevant credentials
-   - `cp .env.example .env`
+     - Add relevant credentials
+     - `cp .env.example .env`
 7. `npm run dev`
 
 8. Go to the server directory
@@ -39,7 +39,7 @@ Pantry Pilot is a full-stack application designed to help users take control of 
    - `cd server`
 9. Replace Firebase API keys with your SDK configurations
 10.  Create a `.env` file 
-   - Add relevant credentials
-   - `cp .env.example .env`
+     - Add relevant credentials
+     - `cp .env.example .env`
 11. `node server.js`
 
