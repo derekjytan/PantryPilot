@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { Card, CardContent, Typography, CircularProgress, Alert, Container, CssBaseline, Box, Grid, Button, CardActions, CardMedia } from '@mui/material';
-import { useAuth } from '../contexts/authContext/page';
+import { useAuth } from '../contexts/authContext';
 import Navbar from '../components/navbar/nav';
 import Link from 'next/link';
 import axios from 'axios';

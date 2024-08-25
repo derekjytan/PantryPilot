@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 import Link from 'next/link';
 import { NavButton, AuthButton, Logo } from './styles';
-import { useAuth } from '../../contexts/authContext/page';
+import { useAuth } from '@/app/contexts/authContext';
 import { auth } from '../../../firebase';
 
 const NavbarContainer = styled(Box)({

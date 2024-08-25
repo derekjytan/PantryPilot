@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from '../../../firebase';
+import { auth } from '../../firebase';
 import { GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 
 // Create an AuthContext using React Context API

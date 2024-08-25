@@ -5,7 +5,7 @@ import { Container, Grid, Box, TextField, Button, Typography, CssBaseline, Table
 import { Add, Edit, Delete, Search } from '@mui/icons-material';
 import Navbar from '../components/navbar/nav';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useAuth } from '../contexts/authContext/page';
+import { useAuth } from '../contexts/authContext';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 

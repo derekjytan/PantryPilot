@@ -5,7 +5,7 @@ import { Box, Typography, TextField, Button, Link, Container, CssBaseline, Theme
 import { createTheme } from '@mui/material/styles';
 import GoogleIcon from '@mui/icons-material/Google';
 import { doCreateUserWithEmailAndPassword, doSignInWithGoogle } from "../../utils/auth";
-import { useAuth } from "../contexts/authContext/page";
+import { useAuth } from "../contexts/authContext";
 import Navbar from "../components/navbar/nav";
 import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion';

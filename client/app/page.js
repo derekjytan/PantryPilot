@@ -3,7 +3,7 @@
 import { Container, Typography, Button, Grid, Box, CssBaseline } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { motion } from 'framer-motion'
-import { useAuth } from './contexts/authContext/page'
+import { useAuth } from './contexts/authContext'
 import Navbar from './components/navbar/nav'
 import Image from 'next/image'
 

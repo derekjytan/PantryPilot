@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 const inter = Inter({ subsets: ["latin"] });
 
 // Dynamically import AuthProvider with SSR disabled
-const AuthProvider = dynamic(() => import("./contexts/authContext/page"), { ssr: false });
+const AuthProvider = dynamic(() => import("./contexts/authContext"), { ssr: false });
 
 export const metadata = {
   title: "Pantry Pilot",
