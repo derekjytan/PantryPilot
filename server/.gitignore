@@ -2,4 +2,4 @@
 serviceAccountKey.json
 
 # Hide the edmam api keys 
-edmam-api.js
+# edmam-api.js
